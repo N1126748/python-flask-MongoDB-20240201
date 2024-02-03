@@ -1,0 +1,74 @@
+/* 通用樣式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 頁面頂部標題欄樣式 */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: right;
+}
+
+/* 登入會員和購物車連結樣式 */
+.user-section a {
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.user-section .icon {
+    width: 30px;
+    /* 設定圖片寬度 */
+    height: 30px;
+    /* 設定圖片高度 */
+}
+
+/* 主要內容區樣式 */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+/* 商品區塊樣式 */
+.product {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+}
+
+/* 商品圖片樣式 */
+.product img {
+    width: 450px;
+    /* 設定商品圖片的寬度 */
+    height: 450px;
+    /* 設定商品圖片的高度 */
+    object-fit: cover;
+    /* 保持圖片比例並裁切至容器大小 */
+    margin-bottom: 10px;
+}
+
+/* 價格和數量的樣式 */
+.product .price {
+    font-weight: bold;
+    color: #333;
+}
+
+.product input[type="number"] {
+    width: 40px;
+    padding: 5px;
+}
+
+/* 購物車按鈕樣式 */
+.add-to-cart {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+}
