@@ -8,12 +8,25 @@ db = client.member_system
 
 # 初始化 Flask 伺服器
 from flask import *
+from flask_pymongo import PyMongo
 app = Flask(
     __name__,
     static_folder="public", 
     static_url_path="/" 
 )
+app.config['MONGO_URI'] = uri
+mongo = PyMongo(app)
+
+
 app.secret_key = "any string but secret"
+
+# 電商首頁
+@app.route("/")
+def home():
+   if "email" in session:
+        state = None
+        return render_template("home.html", state=state)
+   return render_template("home.html")
 
 # 登入路由
 @app.route("/login")
@@ -35,17 +48,113 @@ def register():
 def register_error():
     return render_template("register.html", error="帳號或電子郵件已註冊過，請重新輸入!")
 
-# (需會員)
-@app.route("/index")
+# 購物車(需會員)
+@app.route("/cart")
 def index():
-    if "account" in session:
-        return render_template("index.html")
+    if "email" in session:
+        collection = db.user
+        email = session["email"]
+        cartInfo = collection.find_one({
+            "email":email
+        })
+        return render_template("cart.html",cartInfo=cartInfo)
     return redirect("/login")
 
-# 電商首頁
-@app.route("/")
-def home():
-   return render_template("home.html")
+# 新增至購物車
+@app.route("/update1", methods=["POST"])
+def update1():
+    if "email" in session:
+        price = int(request.form["price"])
+        quantity1 = int(request.form["quantity1"])
+        total = price*quantity1
+
+        collection = db.user
+
+        collection.update_one({
+            "email":session["email"]
+        }, {
+            "$set":{
+                "coat":[total,quantity1]
+            }
+        })
+        return redirect("/")
+    return redirect("/login")
+
+@app.route("/update2", methods=["POST"])
+def update2():
+    if "email" in session:
+        price2 = int(request.form["price2"])
+        quantity2 = int(request.form["quantity2"])
+        total = price2*quantity2
+
+        collection = db.user
+
+        collection.update_one({
+            "email":session["email"]
+        }, {
+            "$set":{
+                "Pants":[total,quantity2]
+            }
+        })
+        return redirect("/")
+    return redirect("/login")
+
+@app.route("/update3", methods=["POST"])
+def update3():
+    if "email" in session:
+        price3 = int(request.form["price3"])
+        quantity3 = int(request.form["quantity3"])
+        total = price3*quantity3
+
+        collection = db.user
+
+        collection.update_one({
+            "email":session["email"]
+        }, {
+            "$set":{
+                "sweater":[total,quantity3]
+            }
+        })
+        return redirect("/")
+    return redirect("/login")
+
+# 刪除商品
+@app.route("/clear1")
+def clear1():
+    collection = db.user
+    collection.update_one({
+        "email":session["email"]
+        }, {
+            "$unset":{
+                "Pants":""
+            }
+        })
+    return redirect("/cart")
+
+@app.route("/clear2")
+def clear2():
+    collection = db.user
+    collection.update_one({
+        "email":session["email"]
+        }, {
+            "$unset":{
+                "sweater":""
+            }
+        })
+    return redirect("/cart")
+
+@app.route("/clear3")
+def clear3():
+    collection = db.user
+    collection.update_one({
+        "email":session["email"]
+        }, {
+            "$unset":{
+                "coat":""
+            }
+        })
+    return redirect("/cart")
+
 
 # 註冊
 @app.route("/signup", methods=["POST"]) 
@@ -97,8 +206,6 @@ def signin():
     })
     if request.form['button'] == 'login':
         # 找不到資料 導回錯誤登入頁面
-        if result == "":
-            return redirect("/login_error")
         if result == None:
             return redirect("/login_error")
         # 登入成功 在session 記錄會員資訊導向首頁
@@ -108,16 +215,13 @@ def signin():
     if request.form['button'] == 'register':
         return redirect("/register")
     
+
 # 登出
 @app.route("/signout")
 def signout():
     # 移除 session 中的會員資訊
-    del session["account"]
+    del session["email"]
     return redirect("/login")
-
-
-
-
 
 
 

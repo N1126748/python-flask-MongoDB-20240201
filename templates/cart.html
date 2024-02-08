@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>購物車</title>
+  </head>
+  <body>
+    <header>
+      <h1>購物車</h1>
+      <a href="/">回首頁</a>
+    </header>
+    
+    <div id="cart-items">
+        <div>
+            {% if cartInfo.Pants != undefined %}
+            <p>褲子：<img src="/b.jpg" alt="商品2" /></p>
+            <p>價格：{{ cartInfo.Pants[0] }}</p>
+            <p>數量：{{ cartInfo.Pants[1] }}</p>
+            <a href="/clear1">刪除</a>
+            {% endif %}
+        </div>
+        <hr>
+        <div>
+            {% if cartInfo.sweater != undefined %}
+            <p>毛衣：<img src="/c.jpg" alt="商品3" /></p>
+            <p>價格：{{ cartInfo.sweater[0] }}</p>
+            <p>數量：{{ cartInfo.sweater[1] }}</p>
+            <a href="/clear2">刪除</a>
+            {% endif %}
+        </div>
+        <hr>        
+        <div>
+            {% if cartInfo.coat != undefined %}
+            <p>外套：<img src="/a.png" alt="商品1" /></p>
+            <p>價格：{{ cartInfo.coat[0] }}</p>
+            <p>數量：{{ cartInfo.coat[1] }}</p>
+            <a href="/clear3">刪除</a>
+            {% endif %}
+        </div>
+    </div>
+  </body>
+</html>
