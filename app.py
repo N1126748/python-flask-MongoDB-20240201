@@ -8,15 +8,11 @@ db = client.member_system
 
 # 初始化 Flask 伺服器
 from flask import *
-from flask_pymongo import PyMongo
 app = Flask(
     __name__,
     static_folder="public", 
     static_url_path="/" 
 )
-app.config['MONGO_URI'] = uri
-mongo = PyMongo(app)
-
 
 app.secret_key = "any string but secret"
 

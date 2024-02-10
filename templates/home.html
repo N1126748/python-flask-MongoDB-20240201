@@ -9,54 +9,66 @@
   <body>
     <header>
       <div class="user-section">
+        
+        {% if state != undefined %}
+        <a href="/signout" id="home_signout"
+          ><img src="/signout.jpg" alt="登出" class="icon"
+        /></a>
+        {% endif %}
+
         <a href="/login" id="home_login"
           ><img src="/login.png" alt="登入" class="icon"
         /></a>
-        <a href="#" id="home_cart"
+        <a href="cart" id="home_cart"
           ><img src="/cart.jpg" alt="購物車" class="icon"
         /></a>
       </div>
     </header>
 
     <main>
-      <section class="product">
-        <img src="/a.png" alt="商品1" />
-        <h2>ESSENTIALS</h2>
-        <p>FOG拉鍊棉外套袖口反光20年新款ESSENTIALS Raglan Full Zip Hoodie</p>
-        <!-- 商品描述 -->
-        <!-- 價格和數量(預設值是1) -->
-        <p class="price">$4,500</p>
-        <label for="quantity1">數量：</label>
-        <input type="number" id="quantity1" name="quantity1" value="1" />
-        <button class="add-to-cart">加入購物車</button>
-      </section>
+      <form action="update1" method="POST">
+        <section class="product">
+          <img src="/a.png" alt="商品1" />
+          <h2>ESSENTIALS</h2>
+          <p>FOG拉鍊棉外套袖口反光20年新款ESSENTIALS Raglan Full Zip Hoodie</p>
+          <!-- 商品描述 -->
+          <!-- 價格和數量(預設值是1) -->
+          <input name="price" class="price" value=4500>$4,500</input>
+          <label for="quantity1">數量：</label>
+          <input type="number" id="quantity1" name="quantity1" value="1" />
+          <button type="submit" class="add-to-cart">加入購物車</button>
+        </section>
+      </form>  
 
-      <section class="product">
-        <img src="/b.jpg" alt="商品2" />
-        <h2>ESSENTIALS</h2>
-        <p>FOG Essentials 鋪棉長褲 Fear Of God Essentials Pullover reflecti</p>
-        <!-- 商品描述 -->
-        <!-- 價格和數量(預設值是1) -->
-        <p class="price">$3,500</p>
-        <label for="quantity2">數量：</label>
-        <input type="number" id="quantity2" name="quantity2" value="1" />
-        <button class="add-to-cart">加入購物車</button>
-      </section>
+      <form action="update2" method="POST">
+        <section class="product">
+          <img src="/b.jpg" alt="商品2" />
+          <h2>ESSENTIALS</h2>
+          <p>FOG Essentials 鋪棉長褲 Fear Of God Essentials Pullover reflecti</p>
+          <!-- 商品描述 -->
+          <!-- 價格和數量(預設值是1) -->
+          <input name="price2" class="price" value=3500>$3,500</input>
+          <label for="quantity2">數量：</label>
+          <input type="number" id="quantity2" name="quantity2" value="1" />
+          <button type="submit" class="add-to-cart">加入購物車</button>
+        </section>
+      </form>
 
-      <section class="product">
-        <img src="/c.jpg" alt="商品3" />
-        <h2>ESSENTIALS</h2>
-        <p>FEAR OF GOD FOG ESSENTIALS 複線胸前字母LOGO 寬鬆圓領衛衣針織毛衣</p>
-        <!-- 商品描述 -->
-        <!-- 價格和數量(預設值是1) -->
-        <p class="price">$4,000</p>
-        <label for="quantity3">數量：</label>
-        <input type="number" id="quantity3" name="quantity3" value="1" />
-        <button class="add-to-cart">加入購物車</button>
-      </section>
+      <form action="update3" method="POST">
+        <section class="product">
+          <img src="/c.jpg" alt="商品3" />
+          <h2>ESSENTIALS</h2>
+          <p>FEAR OF GOD FOG ESSENTIALS 複線胸前字母LOGO 寬鬆圓領衛衣針織毛衣</p>
+          <!-- 商品描述 -->
+          <!-- 價格和數量(預設值是1) -->
+          <input name="price3" class="price" value=4000>$4,000</input>
+          <label for="quantity3">數量：</label>
+          <input type="number" id="quantity3" name="quantity3" value="1" />
+          <button type="submit" class="add-to-cart">加入購物車</button>
+        </section>
+      </form>
       <!-- 可以添加更多商品 -->
     </main>
 
-    <script src="script.js"></script>
   </body>
 </html>
