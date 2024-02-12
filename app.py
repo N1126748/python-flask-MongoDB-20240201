@@ -115,40 +115,33 @@ def update3():
     return redirect("/login")
 
 # 刪除商品
-@app.route("/clear1")
-def clear1():
+@app.route("/clear/<Num>")
+def clear(Num):
     collection = db.user
-    collection.update_one({
-        "email":session["email"]
-        }, {
-            "$unset":{
-                "Pants":""
-            }
-        })
-    return redirect("/cart")
-
-@app.route("/clear2")
-def clear2():
-    collection = db.user
-    collection.update_one({
-        "email":session["email"]
-        }, {
-            "$unset":{
-                "sweater":""
-            }
-        })
-    return redirect("/cart")
-
-@app.route("/clear3")
-def clear3():
-    collection = db.user
-    collection.update_one({
-        "email":session["email"]
-        }, {
-            "$unset":{
-                "coat":""
-            }
-        })
+    if Num == "1":
+        collection.update_one({
+            "email":session["email"]
+            }, {
+                "$unset":{
+                    "Pants":""
+                }
+            })
+    elif Num == "2":
+        collection.update_one({
+            "email":session["email"]
+            }, {
+                "$unset":{
+                    "sweater":""
+                }
+            })
+    elif Num == "3":
+        collection.update_one({
+            "email":session["email"]
+            }, {
+                "$unset":{
+                    "coat":""
+                }
+            })
     return redirect("/cart")
 
 
