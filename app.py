@@ -115,35 +115,17 @@ def update3():
     return redirect("/login")
 
 # 刪除商品
-@app.route("/clear/<Num>")
-def clear(Num):
+@app.route("/clear/<Prodact>")
+def clear(Prodact):
     collection = db.user
-    if Num == "1":
-        collection.update_one({
+    collection.update_one({
             "email":session["email"]
             }, {
                 "$unset":{
-                    "Pants":""
-                }
-            })
-    elif Num == "2":
-        collection.update_one({
-            "email":session["email"]
-            }, {
-                "$unset":{
-                    "sweater":""
-                }
-            })
-    elif Num == "3":
-        collection.update_one({
-            "email":session["email"]
-            }, {
-                "$unset":{
-                    "coat":""
+                    Prodact:""
                 }
             })
     return redirect("/cart")
-
 
 # 註冊
 @app.route("/signup", methods=["POST"]) 
