@@ -57,62 +57,25 @@ def index():
     return redirect("/login")
 
 # 新增至購物車
-@app.route("/update1", methods=["POST"])
-def update1():
+@app.route("/update/<Prodact>/<price>/<quantity>", methods=["POST"])
+def update(Prodact, price, quantity):
     if "email" in session:
-        price = int(request.form["price"])
-        quantity1 = int(request.form["quantity1"])
-        total = price*quantity1
+
+        price_ = int(request.form[price])
+        quantity_ = int(request.form[quantity])
+        total = price_*quantity_
 
         collection = db.user
-
         collection.update_one({
             "email":session["email"]
-        }, {
+         }, {
             "$set":{
-                "coat":[total,quantity1]
-            }
+                Prodact:[total,quantity_]
+             }
         })
         return redirect("/")
-    return redirect("/login")
-
-@app.route("/update2", methods=["POST"])
-def update2():
-    if "email" in session:
-        price2 = int(request.form["price2"])
-        quantity2 = int(request.form["quantity2"])
-        total = price2*quantity2
-
-        collection = db.user
-
-        collection.update_one({
-            "email":session["email"]
-        }, {
-            "$set":{
-                "Pants":[total,quantity2]
-            }
-        })
-        return redirect("/")
-    return redirect("/login")
-
-@app.route("/update3", methods=["POST"])
-def update3():
-    if "email" in session:
-        price3 = int(request.form["price3"])
-        quantity3 = int(request.form["quantity3"])
-        total = price3*quantity3
-
-        collection = db.user
-
-        collection.update_one({
-            "email":session["email"]
-        }, {
-            "$set":{
-                "sweater":[total,quantity3]
-            }
-        })
-        return redirect("/")
-    return redirect("/login")
+    else:
+        return redirect("/login")
 
 # 刪除商品
 @app.route("/clear/<Prodact>")
@@ -192,7 +155,7 @@ def signin():
 def signout():
     # 移除 session 中的會員資訊
     del session["email"]
-    return redirect("/login")
+    return redirect("/")
 
 
 
