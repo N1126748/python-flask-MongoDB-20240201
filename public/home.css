@@ -53,6 +53,13 @@ main {
     margin-bottom: 10px;
 }
 
+/* 尺寸選項樣式 */
+.product select {
+    width: 80px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
 /* 價格和數量的樣式 */
 .product .price {
     font-weight: bold;
@@ -63,6 +70,14 @@ main {
     width: 40px;
     padding: 5px;
 }
+
+/* 取消input元素的外框 */
+input.price {
+    border: none;
+    outline: none;
+    appearance: none;
+}
+
 
 /* 購物車按鈕樣式 */
 .add-to-cart {
