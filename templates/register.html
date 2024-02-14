@@ -52,31 +52,31 @@
         <div class="row mb-3">
           <div class="col-md-6">
             <label for="exampleInputaccount1" class="form-label" style="font-size: 25px;">帳號</label>
-            <input name="account" type="account" class="form-control" id="account" placeholder="Account" />
+            <input name="account" type="account" class="form-control" id="account" placeholder="Account" required/>
           </div>
           <div class="col-md-6">
             <label for="exampleInputPassword1" class="form-label" style="font-size: 25px;">密碼</label>
-            <input name="password" type="password" class="form-control" id="password" placeholder="Password" />
+            <input name="password" type="password" class="form-control" id="password" placeholder="Password" required/>
           </div>
         </div>
         <div class="row mb-3">
           <div class="col-md-6">
             <label for="exampleInputName1" class="form-label" style="font-size: 25px;">姓名</label>
-            <input name="nickname" type="name" class="form-control" id="name" placeholder="Name" />
+            <input name="nickname" type="name" class="form-control" id="name" placeholder="Name" required/>
           </div>
           <div class="col-md-6">
             <label for="exampleInputPhone1" class="form-label" style="font-size: 25px;">電話</label>
-            <input name="phone" type="phone" class="form-control" id="phone" placeholder="Phone" />
+            <input name="phone" type="phone" class="form-control" id="phone" placeholder="Phone" required/>
           </div>
         </div>
         <div class="row mb-3">
           <div class="col-md-6">
             <label for="exampleInputEmail1" class="form-label" style="font-size: 25px;">電子郵件</label>
-            <input name="email" type="email" class="form-control" id="email" placeholder="Email" />
+            <input name="email" type="email" class="form-control" id="email" placeholder="Email" required/>
           </div>
           <div class="col-md-6">
             <label for="exampleInputaddress1" class="form-label" style="font-size: 25px;">地址</label>
-            <input name="address" type="address" class="form-control" id="address" placeholder="Address" />
+            <input name="address" type="address" class="form-control" id="address" placeholder="Address" required/>
             <div id="accountHelp" class="form-text" >{{ error }}</div>
           </div>
         </div>
@@ -86,22 +86,22 @@
         </div>
       </form>
       <script>
-        document.getElementById("send").addEventListener("click", function () {
-          // 檢查所有帶有required屬性的輸入資料是否都有值
-          var isValid = Array.from(
-            document.querySelectorAll("input[required]")
-          ).every(function (input) {
-            return input.value.trim() !== "";
-          });
-  
-          if (!isValid) {
-            // 如果有未填寫的資料，顯示警告框
-            alert("請填寫完整所有資料！");
-          } else {
-            // 如果所有資料都填寫了，可以執行送出操作
-            alert("已提交！");
-          }
+      document.getElementById("send").addEventListener("click", function () {
+        // 檢查所有帶有required屬性的輸入資料是否都有值
+        var isValid = Array.from(
+          document.querySelectorAll("input[required]")
+        ).every(function (input) {
+          return input.value.trim() !== "";
         });
-      </script>
+
+        if (!isValid) {
+          // 如果有未填寫的資料，顯示警告框
+          alert("請填寫完整所有資料！");
+        } else {
+          // 如果所有資料都填寫了，可以執行送出操作
+          alert("已提交！");
+        }
+      });
+    </script>
     </body>
   </html>
