@@ -57,35 +57,41 @@ def index():
     return redirect("/login")
 
 # 新增至購物車
-@app.route("/update/<Prodact>/<price>/<quantity>", methods=["POST"])
-def update(Prodact, price, quantity):
+@app.route("/update/<Prodact>/<size>/<price>/<quantity>", methods=["POST"])
+def update(Prodact, size, price, quantity):
     if "email" in session:
 
+        size_ = request.form[size]
         price_ = int(request.form[price])
         quantity_ = int(request.form[quantity])
-        total = price_*quantity_
+        total = price_ * quantity_
+
+        key_to_update = Prodact + '.' + size_
+        new_value = [total, quantity_]
 
         collection = db.user
         collection.update_one({
             "email":session["email"]
-         }, {
+        }, {
             "$set":{
-                Prodact:[total,quantity_]
-             }
+                key_to_update: new_value
+            }
         })
         return redirect("/")
+
     else:
         return redirect("/login")
 
 # 刪除商品
-@app.route("/clear/<Prodact>")
-def clear(Prodact):
+@app.route("/clear/<Prodact>/<size>")
+def clear(Prodact, size):
+    key_to_update = Prodact + '.' + size
     collection = db.user
     collection.update_one({
             "email":session["email"]
             }, {
                 "$unset":{
-                    Prodact:""
+                    key_to_update:''
                 }
             })
     return redirect("/cart")

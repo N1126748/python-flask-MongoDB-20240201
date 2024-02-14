@@ -13,31 +13,116 @@
     
     <div id="cart-items">
         <div>
-            {% if cartInfo.Pants != undefined %}
+           
+        </div>
+        <div>
+            {% if 'S' in cartInfo.Pants %}
             <p>褲子：<img src="/b.jpg" alt="商品2" /></p>
-            <p>價格：{{ cartInfo.Pants[0] }}</p>
-            <p>數量：{{ cartInfo.Pants[1] }}</p>
-            <a href="/clear/Pants">刪除</a>
+            <p>尺寸：S</p>
+            <p>價格：{{ cartInfo.Pants['S'][0] }}</p>
+            <p>數量：{{ cartInfo.Pants['S'][1] }}</p>
+            <a href="/clear/Pants/S">刪除</a>
+            {% endif %}
+        
+            {% if 'M' in cartInfo.Pants %}
+            <p>褲子：<img src="/b.jpg" alt="商品2" /></p>
+            <p>尺寸：M</p>
+
+            <p>價格：{{ cartInfo.Pants['M'][0] }}</p>
+            <p>數量：{{ cartInfo.Pants['M'][1] }}</p>
+            <a href="/clear/Pants/M">刪除</a>
+            {% endif %}
+        
+            {% if 'L' in cartInfo.Pants %}
+            <p>褲子：<img src="/b.jpg" alt="商品2" /></p>
+            <p>尺寸：L</p>
+            <p>價格：{{ cartInfo.Pants['L'][0] }}</p>
+            <p>數量：{{ cartInfo.Pants['L'][1] }}</p>
+            <a href="/clear/Pants/L">刪除</a>
+            {% endif %}
+        
+            {% if 'XL' in cartInfo.Pants %}
+            <p>褲子：<img src="/b.jpg" alt="商品2" /></p>
+            <p>尺寸：XL</p>
+
+            <p>價格：{{ cartInfo.Pants['XL'][0] }}</p>
+            <p>數量：{{ cartInfo.Pants['XL'][1] }}</p>
+            <a href="/clear/Pants/XL">刪除</a>
             {% endif %}
         </div>
-        <hr>
+        
         <div>
-            {% if cartInfo.sweater != undefined %}
-            <p>毛衣：<img src="/c.jpg" alt="商品3" /></p>
-            <p>價格：{{ cartInfo.sweater[0] }}</p>
-            <p>數量：{{ cartInfo.sweater[1] }}</p>
-            <a href="/clear/sweater">刪除</a>
-            {% endif %}
-        </div>
-        <hr>        
-        <div>
-            {% if cartInfo.coat != undefined %}
-            <p>外套：<img src="/a.png" alt="商品1" /></p>
-            <p>價格：{{ cartInfo.coat[0] }}</p>
-            <p>數量：{{ cartInfo.coat[1] }}</p>
-            <a href="/clear/coat">刪除</a>
-            {% endif %}
-        </div>
+          {% if 'S' in cartInfo.sweater %}
+          <p>褲子：<img src="/c.jpg" alt="商品2" /></p>
+          <p>尺寸：S</p>
+          <p>價格：{{ cartInfo.sweater['S'][0] }}</p>
+          <p>數量：{{ cartInfo.sweater['S'][1] }}</p>
+          <a href="/clear/sweater/S">刪除</a>
+          {% endif %}
+      
+          {% if 'M' in cartInfo.sweater %}
+          <p>褲子：<img src="/c.jpg" alt="商品2" /></p>
+          <p>尺寸：M</p>
+
+          <p>價格：{{ cartInfo.sweater['M'][0] }}</p>
+          <p>數量：{{ cartInfo.sweater['M'][1] }}</p>
+          <a href="/clear/sweater/M">刪除</a>
+          {% endif %}
+      
+          {% if 'L' in cartInfo.sweater %}
+          <p>褲子：<img src="/c.jpg" alt="商品2" /></p>
+          <p>尺寸：L</p>
+          <p>價格：{{ cartInfo.sweater['L'][0] }}</p>
+          <p>數量：{{ cartInfo.sweater['L'][1] }}</p>
+          <a href="/clear/sweater/L">刪除</a>
+          {% endif %}
+      
+          {% if 'XL' in cartInfo.sweater %}
+          <p>褲子：<img src="/c.jpg" alt="商品2" /></p>
+          <p>尺寸：XL</p>
+
+          <p>價格：{{ cartInfo.sweater['XL'][0] }}</p>
+          <p>數量：{{ cartInfo.sweater['XL'][1] }}</p>
+          <a href="/clear/sweater/XL">刪除</a>
+          {% endif %}
+      </div>
+
+      <div>
+        {% if 'S' in cartInfo.coat %}
+        <p>褲子：<img src="/a.png" alt="商品2" /></p>
+        <p>尺寸：S</p>
+        <p>價格：{{ cartInfo.coat['S'][0] }}</p>
+        <p>數量：{{ cartInfo.coat['S'][1] }}</p>
+        <a href="/clear/coat/S">刪除</a>
+        {% endif %}
+    
+        {% if 'M' in cartInfo.coat %}
+        <p>褲子：<img src="/a.png" alt="商品2" /></p>
+        <p>尺寸：M</p>
+
+        <p>價格：{{ cartInfo.coat['M'][0] }}</p>
+        <p>數量：{{ cartInfo.coat['M'][1] }}</p>
+        <a href="/clear/coat/M">刪除</a>
+        {% endif %}
+    
+        {% if 'L' in cartInfo.coat %}
+        <p>褲子：<img src="/a.png" alt="商品2" /></p>
+        <p>尺寸：L</p>
+        <p>價格：{{ cartInfo.coat['L'][0] }}</p>
+        <p>數量：{{ cartInfo.coat['L'][1] }}</p>
+        <a href="/clear/coat/L">刪除</a>
+        {% endif %}
+    
+        {% if 'XL' in cartInfo.coat %}
+        <p>褲子：<img src="/a.png" alt="商品2" /></p>
+        <p>尺寸：XL</p>
+
+        <p>價格：{{ cartInfo.coat['XL'][0] }}</p>
+        <p>數量：{{ cartInfo.coat['XL'][1] }}</p>
+        <a href="/clear/coat/XL">刪除</a>
+        {% endif %}
+        
+    </div>
     </div>
   </body>
 </html>
