@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>購物車</title>
+    <link rel="stylesheet" href="/cart.css">
   </head>
   <body>
     <header>
@@ -12,9 +13,7 @@
     </header>
     
     <div id="cart-items">
-        <div>
-           
-        </div>
+      <button id="checkout-btn">結帳</button>
         <div>
             {% if 'S' in cartInfo.Pants %}
             <p>褲子：<img src="/b.jpg" alt="商品2" /></p>
