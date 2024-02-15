@@ -38,8 +38,8 @@
             <input name="price" class="price" value="4500" readonly>
           </div>
           <label for="quantity1">數量：</label>
-          <input type="number" id="quantity1" name="quantity" value="1" />
-
+          <input type="number" id="quantity1" name="quantity" value="1" oninput="validateQuantity('quantity1')"/>
+            
           <!-- 尺寸選項 -->
           <label for="size1">尺寸：</label>
           <select id="size1" name="size">
@@ -65,7 +65,7 @@
             <input name="price" class="price" value=3500 readonly></input>
           </div>
           <label for="quantity2">數量：</label>
-          <input type="number" id="quantity2" name="quantity" value="1" />
+          <input type="number" id="quantity2" name="quantity" value="1" oninput="validateQuantity('quantity2')"/>
 
           <!-- 尺寸選項 -->
           <label for="size1">尺寸：</label>
@@ -92,7 +92,7 @@
             <input name="price" class="price" value=4000 readonly></input>
           </div>
           <label for="quantity3">數量：</label>
-          <input type="number" id="quantity3" name="quantity" value="1" />
+          <input type="number" id="quantity3" name="quantity" value="1" oninput="validateQuantity('quantity3')"/>
 
           <!-- 尺寸選項 -->
           <label for="size1">尺寸：</label>
@@ -107,7 +107,18 @@
         </section>
       </form>
       <!-- 可以添加更多商品 -->
-    </main>
 
+      <!-- 設定數量不能為0或負 -->
+      <script>
+        function validateQuantity(inputId) {
+            var quantityInput = document.getElementById(inputId);
+            var quantityValue = parseInt(quantityInput.value);
+    
+            if (quantityValue < 1 || isNaN(quantityValue)) {
+                quantityInput.value = 1;
+            }
+        }
+      </script>
+    </main>
   </body>
 </html>
