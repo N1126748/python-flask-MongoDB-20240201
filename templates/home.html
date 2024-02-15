@@ -26,7 +26,7 @@
     </header>
 
     <main>
-      <form action="update/coat/size/price/quantity" method="POST">
+      <form action="update/coat/size/price/quantity" method="POST" onsubmit="submitForm(event, 'quantity1')">
         <section class="product">
           <img src="/a.png" alt="商品1" />
           <h2>ESSENTIALS</h2>
@@ -53,7 +53,7 @@
         </section>
       </form>  
 
-      <form action="update/Pants/size/price/quantity" method="POST">
+      <form action="update/Pants/size/price/quantity" method="POST" onsubmit="submitForm(event, 'quantity2')">
         <section class="product">
           <img src="/b.jpg" alt="商品2" />
           <h2>ESSENTIALS</h2>
@@ -80,7 +80,7 @@
         </section>
       </form>
 
-      <form action="update/sweater/size/price/quantity" method="POST">
+      <form action="update/sweater/size/price/quantity" method="POST" onsubmit="submitForm(event, 'quantity3')">
         <section class="product">
           <img src="/c.jpg" alt="商品3" />
           <h2>ESSENTIALS</h2>
@@ -108,8 +108,8 @@
       </form>
       <!-- 可以添加更多商品 -->
 
-      <!-- 設定數量不能為0或負 -->
       <script>
+        // 設定數量不能為0或負
         function validateQuantity(inputId) {
             var quantityInput = document.getElementById(inputId);
             var quantityValue = parseInt(quantityInput.value);
@@ -117,6 +117,20 @@
             if (quantityValue < 1 || isNaN(quantityValue)) {
                 quantityInput.value = 1;
             }
+        }
+
+        // 阻止按下submit按鈕刷新網頁
+        function submitForm(event, inputId) {
+            event.preventDefault();  // 阻止默認提交行為
+            validateQuantity(inputId);  // 呼叫驗證數量的函數
+            // 獲取表單數據
+            var form = event.target;  // 取得觸發事件的表單元素
+            var formData = new FormData(form);  // 創建 FormData 物件來獲取表單數據
+            // 使用 Fetch API 發送
+            fetch(form.action, {
+                method: form.method,
+                body: formData
+            })
         }
       </script>
     </main>
