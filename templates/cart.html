@@ -13,8 +13,14 @@
     </header>
     
     <div id="cart-items">
-      <button id="checkout-btn">結帳</button>
+      <button id="checkout-btn">{{a}}結帳</button>
         <div>
+          {% if cartInfo.Pants == undefind and cartInfo.coat == undefind and cartInfo.sweater == undefind %}
+            <p>購物車目前沒有商品</p>
+          {% endif %}
+        </div>
+        <div>
+          
             {% if 'S' in cartInfo.Pants %}
             <p>褲子：<img src="/b.jpg" alt="商品2" /></p>
             <p>尺寸：S</p>
@@ -122,6 +128,8 @@
         {% endif %}
         
     </div>
+    <hr>
+    <p>{{total}}</p>
     </div>
   </body>
 </html>

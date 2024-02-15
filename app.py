@@ -53,7 +53,32 @@ def index():
         cartInfo = collection.find_one({
             "email":email
         })
-        return render_template("cart.html",cartInfo=cartInfo)
+        
+        Pants = 0
+        sweater = 0
+        coat = 0
+        
+        if 'Pants' in cartInfo:
+            for size in ['S','M','L','XL']:
+                if size in cartInfo['Pants']:
+                    Pants += cartInfo['Pants'][size][0]
+
+        if 'sweater' in cartInfo:          
+            for size in ['S','M','L','XL']:
+                if size in cartInfo['sweater']:
+                    sweater += cartInfo['sweater'][size][0]
+
+        if 'coat' in cartInfo:          
+            for size in ['S','M','L','XL']:
+                if size in cartInfo['coat']:
+                    coat += cartInfo['coat'][size][0]
+                    
+        total = Pants + sweater + coat
+        if total == 0:
+            return render_template("cart.html", cartInfo=cartInfo)
+        elif total > 0:
+            return render_template("cart.html", cartInfo=cartInfo, total=total)
+            
     return redirect("/login")
 
 # 新增至購物車
@@ -92,6 +117,13 @@ def clear(Prodact, size):
             }, {
                 "$unset":{
                     key_to_update:''
+                }
+            })
+    collection.update_one({
+            "email":session["email"]
+            }, {
+                "$unset":{
+                    Prodact:''
                 }
             })
     return redirect("/cart")
