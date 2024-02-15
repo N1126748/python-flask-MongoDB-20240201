@@ -111,7 +111,7 @@ def signup():
 
     # 檢查是否有相同資料
     result = collection.find_one({
-        "$and":[
+        "$or":[
             {"account":account},
             {"email":email}
         ]
