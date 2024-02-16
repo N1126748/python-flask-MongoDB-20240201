@@ -1,0 +1,47 @@
+/* 新增橘色背景 */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 166, 1);
+    z-index: -1;
+    /* 設為-1，使其在內容之後 */
+}
+
+/* 調整外框 */
+.custom-border {
+    border: 5px solid black;
+    padding: 50px;
+    border-radius: 50px;
+    background-color: rgb(122, 218, 228);
+    width: 500px;
+    /* 修改為您想要的固定寬度 */
+    height: 400px;
+}
+
+/* 設置按鈕登入 */
+#login {
+    background-color: rgb(40, 226, 40);
+    color: white;
+    /* 設置字體顏色為白色 */
+    width: 70px;
+    height: 40px;
+}
+
+#login:hover {
+    background-color: rgba(29, 117, 29, 0.734);
+    /* 碰觸時改變成深綠色 */
+}
+
+h1 {
+    position: relative;
+    top: 90px;
+    /* 調整上邊距 */
+}
+
+#accountHelp {
+    color: red;
+}
