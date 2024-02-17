@@ -15,9 +15,16 @@ function submitForm(event, inputId) {
     // 獲取表單數據
     var form = event.target;  // 取得觸發事件的表單元素
     var formData = new FormData(form);  // 創建 FormData 物件來獲取表單數據
-    // 使用 Fetch API 發送
+    // 使用 Fetch API 發送, Fetch API 回傳 Promise 物件,處理非同步的網路請求
     fetch(form.action, {
         method: form.method,
         body: formData
-    })
+    }).then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert(data.error);
+        } else if (data.success) {
+            alert('已加入購物車');
+        }
+    });
 }

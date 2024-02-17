@@ -102,10 +102,11 @@ def update(Prodact, size, price, quantity):
                 key_to_update: new_value
             }
         })
-        return redirect("/")
+        #偵測是否登入會員,這兩個 jsonify 語句用於將成功或失敗的訊息以 JSON 格式回傳給前端
+        return jsonify({"success": True})
 
     else:
-        return redirect("/login")
+        return jsonify({"error": "請先登入會員"})
 
 # 刪除商品
 @app.route("/clear/<Prodact>/<size>")
