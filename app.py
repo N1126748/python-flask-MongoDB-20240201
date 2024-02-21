@@ -119,14 +119,19 @@ def update(Prodact, size, price, quantity):
 def clear(Prodact, size):
     key_to_update = Prodact + '.' + size
     collection = db.user
-    result = collection.update_one({
+    collection.update_one({
+        "email":session["email"]
+        }, {
+            "$unset":{
+                key_to_update:''
+            }
+        })
+    
+    cartInfo = collection.find_one({
             "email":session["email"]
-            }, {
-                "$unset":{
-                    key_to_update:''
-                }
-            })
-    if result == {}:
+        })
+    
+    if cartInfo[Prodact] == {}:
         collection.update_one({
                 "email":session["email"]
                 }, {
