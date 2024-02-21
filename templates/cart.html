@@ -16,7 +16,7 @@
       <button id="checkout-btn">{{a}}結帳</button>
       <div class="empty-cart-message">
         {% if cartInfo.Pants == undefind and cartInfo.coat == undefind and
-        cartInfo.sweater == undefind %}
+        cartInfo.sweater == undefind and cartInfo.shoes == undefind %}
         <p>購物車目前沒有商品</p>
         {% endif %}
       </div>
@@ -107,6 +107,36 @@
         <p>價格：{{ cartInfo.coat['XL'][0] }}</p>
         <p>數量：{{ cartInfo.coat['XL'][1] }}</p>
         <a href="/clear/coat/XL">刪除</a>
+        {% endif %}
+      </div>
+
+      <div>
+        {% if 'US-9' in cartInfo.shoes %}
+        <p>鞋子：<img src="/d.png" alt="商品4" /></p>
+        <p>尺寸：US-9</p>
+        <p>價格：{{ cartInfo.shoes['US-9'][0] }}</p>
+        <p>數量：{{ cartInfo.shoes['US-9'][1] }}</p>
+        <a href="/clear/shoes/US-9">刪除</a>
+        {% endif %} {% if 'US-10' in cartInfo.shoes %}
+        <p>鞋子：<img src="/d.png" alt="商品4" /></p>
+        <p>尺寸：US-10</p>
+
+        <p>價格：{{ cartInfo.shoes['US-10'][0] }}</p>
+        <p>數量：{{ cartInfo.shoes['US-10'][1] }}</p>
+        <a href="/clear/shoes/US-10">刪除</a>
+        {% endif %} {% if 'US-11' in cartInfo.shoes %}
+        <p>鞋子：<img src="/d.png" alt="商品4" /></p>
+        <p>尺寸：US-11</p>
+        <p>價格：{{ cartInfo.shoes['US-11'][0] }}</p>
+        <p>數量：{{ cartInfo.shoes['US-11'][1] }}</p>
+        <a href="/clear/shoes/US-11">刪除</a>
+        {% endif %} {% if 'US-12' in cartInfo.shoes %}
+        <p>鞋子：<img src="/d.png" alt="商品4" /></p>
+        <p>尺寸：US-12</p>
+
+        <p>價格：{{ cartInfo.shoes['US-12'][0] }}</p>
+        <p>數量：{{ cartInfo.shoes['US-12'][1] }}</p>
+        <a href="/clear/shoes/US-12">刪除</a>
         {% endif %}
       </div>
       <hr />

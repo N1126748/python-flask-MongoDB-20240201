@@ -57,6 +57,7 @@ def index():
         Pants = 0
         sweater = 0
         coat = 0
+        shoes = 0
         
         if 'Pants' in cartInfo:
             for size in ['S','M','L','XL']:
@@ -72,8 +73,13 @@ def index():
             for size in ['S','M','L','XL']:
                 if size in cartInfo['coat']:
                     coat += cartInfo['coat'][size][0]
+
+        if 'shoes' in cartInfo:
+            for size in ['US-9','US-10','US-11','US-12']:
+                if size in cartInfo['shoes']:
+                    shoes += cartInfo['shoes'][size][0]
                     
-        total = Pants + sweater + coat
+        total = Pants + sweater + coat + shoes
         if total == 0:
             return render_template("cart.html", cartInfo=cartInfo)
         elif total > 0:

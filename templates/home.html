@@ -106,6 +106,33 @@
           <button type="submit" class="add-to-cart">加入購物車</button>
         </section>
       </form>
+
+      <form action="update/shoes/size/price/quantity" method="POST" onsubmit="submitForm(event, 'quantity4')">
+        <section class="product">
+          <img src="/d.png" alt="商品4" />
+          <h2>NIKE</h2>
+          <p>CLOT x sacai x Nike</p>
+          <!-- 商品描述 -->
+          <!-- 價格和數量(預設值是1) -->
+          <div class="price-container">
+            <span class="currency-symbol">$</span>
+            <input name="price" class="price" value=6000 readonly>
+          </div>
+          <label for="quantity4">數量：</label>
+          <input type="number" id="quantity4" name="quantity" value="1" oninput="validateQuantity('quantity4')"/>
+
+          <!-- 尺寸選項 -->
+          <label for="size1">尺寸：</label>
+          <select id="size1" name="size">
+            <option value="US-9">US-9</option>
+            <option value="US-10">US-10</option>
+            <option value="US-11">US-11</option>
+            <option value="US-12">US-12</option>
+          </select>
+
+          <button type="submit" class="add-to-cart">加入購物車</button>
+        </section>
+      </form>
       <!-- 可以添加更多商品 -->
 
       <script src="/home.js"></script>
