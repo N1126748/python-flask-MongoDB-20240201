@@ -13,6 +13,14 @@ header {
     text-align: right;
 }
 
+/* 頁面底部樣式 */
+footer {
+    background-color: rgb(41, 41, 41);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
 /* 登入會員和購物車連結樣式 */
 .user-section a {
     margin-left: 10px;
