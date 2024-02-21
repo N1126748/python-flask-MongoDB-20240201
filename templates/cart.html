@@ -13,11 +13,12 @@
     </header>
 
     <div id="cart-items">
-      <button id="checkout-btn">{{a}}結帳</button>
+      {% if cartInfo.Pants or cartInfo.coat or cartInfo.sweater or cartInfo.shoes %}
+        <button id="checkout-btn">{{a}}結帳</button>
+      {% endif %}
       <div class="empty-cart-message">
-        {% if cartInfo.Pants == undefind and cartInfo.coat == undefind and
-        cartInfo.sweater == undefind and cartInfo.shoes == undefind %}
-        <p>購物車目前沒有商品</p>
+        {% if not (cartInfo.Pants or cartInfo.coat or cartInfo.sweater or cartInfo.shoes) %}
+          <p>購物車目前沒有商品</p>
         {% endif %}
       </div>
       <div>
