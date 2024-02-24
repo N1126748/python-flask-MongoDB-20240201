@@ -7,47 +7,46 @@ document.addEventListener('DOMContentLoaded', function () {
   const phone = document.getElementById('phone');
   const email = document.getElementById('email');
   const address = document.getElementById('address');
+  const submitButton = document.getElementById('send');
 
   name.addEventListener('input', () => {
     validateField(name, name.value.trim() !== '', '請填寫名稱');
+    checkInputs(); // 驗證輸入並更新按鈕狀態
   });
 
   email.addEventListener('input', () => {
     validateField(email, isEmail(email.value.trim()), '無效的電子信箱');
+    checkInputs();
   });
 
   phone.addEventListener('input', () => {
     validateField(phone, isPhone(phone.value.trim()), '無效的手機號碼');
+    checkInputs(); 
   });
 
   account.addEventListener('input', () => {
     validateField(account, account.value.trim().length >= 8, '帳號過短,請填寫八位數帳號');
+    checkInputs();
   });
 
   password.addEventListener('input', () => {
     validateField(password, password.value.trim().length >= 8, '密碼過短,請填寫八位數密碼');
+    checkInputs(); 
   });
 
   address.addEventListener('input', () => {
     validateField(address, address.value.trim() !== '', '請填寫地址');
+    checkInputs(); 
   });
 
   function checkInputs() {
     let isValid = true;
-    validateField(name, name.value.trim() !== '', '請填寫名稱');
-    validateField(email, isEmail(email.value.trim()), '無效的電子信箱');
-    validateField(phone, isPhone(phone.value.trim()), '無效的手機號碼');
-    validateField(account, account.value.trim().length >= 8, '帳號過短,請填寫八位數帳號');
-    validateField(password, password.value.trim().length >= 8, '密碼過短,請填寫八位數密碼');
-    validateField(address, address.value.trim() !== '', '請填寫地址');
-
-    document.querySelectorAll(".col-md-6").forEach((control) => {
-      if (control.classList.contains('error')) {
-        isValid = false; 
-      }
-    });
-
-    return isValid;
+    // 驗證所有輸入欄位
+    if (!(name.value.trim() !== '' && isEmail(email.value.trim()) && isPhone(phone.value.trim()) && account.value.trim().length >= 8 && password.value.trim().length >= 8 && address.value.trim() !== '')) {
+      isValid = false;
+    }
+    // 更新按鈕狀態
+    submitButton.disabled = !isValid;
   }
 
   function validateField(input, condition, errorMessage){
@@ -80,6 +79,5 @@ document.addEventListener('DOMContentLoaded', function () {
   function isPhone(phone){
     return /^09\d{8}$/.test(phone);
   }
-
-
+  
 });
