@@ -8,7 +8,7 @@ body::before {
     height: 100%;
     background-color: rgb(255, 166, 1);
     z-index: -1;
-    /* 設為-1，使其在內容之後 */
+
 }
 
 /* 調整外框 */
@@ -16,11 +16,9 @@ body::before {
     border: 5px solid black;
     padding: 50px;
     border-radius: 30px;
-    /* 圓弧邊框 */
+
     background-color: rgba(200, 215, 216, 0.81);
     position: relative;
-    /* width: 550px;  */
-    /* height: 450px; */
 }
 
 /* 調整送出按鈕位置 */
@@ -28,14 +26,64 @@ body::before {
     position: absolute;
     bottom: 10px;
     right: 20px;
+
 }
 
 h1 {
     position: relative;
     top: 30px;
-    /* 調整上邊距 */
+
 }
 
 #accountHelp {
     color: red;
+}
+
+.col-md-6{
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.col-md-6 label{
+    display: block;
+    margin-bottom: 5px;
+}
+
+.col-md-6 input{
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+}
+.col-md-6 .icon{
+    position: absolute;
+    right: 10px;
+    top: 62%;
+    transform: translate(-50%);
+    font-size: 20px;
+    color: transparent;
+    pointer-events: none;
+}
+
+.col-md-6.success input{
+    border-color: #2ecc71;
+}
+
+.col-md-6.success .icon{
+    color: #2ecc71;
+}
+
+.col-md-6.error input{
+    border-color: #e74c3e;
+}
+
+.col-md-6.error .icon,
+.col-md-6.error input::placeholder{
+    color: #e74c3e;
+}
+
+.modal{
+    display: none;
 }
